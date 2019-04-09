@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PackStream"
-  s.version      = "1.0.2"
+  s.version      = "1.1.0"
   s.summary      = "PackStream implementation in Swift"
 
   s.description  = <<-DESC

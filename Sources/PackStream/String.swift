@@ -19,9 +19,9 @@ extension String: PackProtocol {
 
         var bytes = [Byte]()
 
-        data.withUnsafeBytes { (p: UnsafePointer<UInt8>) -> Void in
-            for i in 0..<data.count {
-                bytes.append(p[i])
+        data.withUnsafeBytes { (p: UnsafeRawBufferPointer) -> Void in
+            for byte in p {
+                bytes.append(byte)
             }
         }
 
@@ -170,7 +170,7 @@ extension String: PackProtocol {
 
     private static func bytesToString(_ bytes: [Byte]) throws -> String {
 
-        let data = Data(bytes: bytes)
+        let data = Data(bytes)
         guard let string = String(data: data, encoding: .utf8) else {
             throw UnpackError.incorrectValue
         }
