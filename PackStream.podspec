@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PackStream"
-  s.version      = "1.1.0"
+  s.version      = "1.1.1"
   s.summary      = "PackStream implementation in Swift"
 
   s.description  = <<-DESC
@@ -23,6 +23,7 @@ This implementation is written in Swift, primarily as a dependency for the Swift
   s.tvos.deployment_target = "9.0"
 
   s.source       = { :git => "https://github.com/neo4j-swift/PackStream-Swift.git", :tag => "#{s.version}" }
-  s.source_files  = "Sources"
+  s.source_files  = "Sources/PackStream"
+  s.swift_versions = "5.0"
 
 end
