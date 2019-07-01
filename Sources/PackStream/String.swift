@@ -121,7 +121,7 @@ extension String: PackProtocol {
         if bytes.count == 0 {
             return 0
         }
-        
+
         guard let firstByte = bytes.first else {
             throw UnpackError.incorrectNumberOfBytes
         }

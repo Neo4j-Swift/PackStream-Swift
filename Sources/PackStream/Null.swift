@@ -4,7 +4,7 @@ public struct Null {
     public init() {}
 }
 
-extension Null : PackProtocol {
+extension Null: PackProtocol {
 
     struct Constants {
         static let byteMarker: Byte = 0xC0

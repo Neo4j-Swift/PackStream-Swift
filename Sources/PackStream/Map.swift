@@ -448,10 +448,10 @@ extension Dictionary {
     }
 }
 
-extension Dictionary: PackProtocol  {
+extension Dictionary: PackProtocol {
 
     public func pack() throws -> [Byte] {
-        if let dict = self as? [String:PackProtocol] {
+        if let dict = self as? [String: PackProtocol] {
            let map = Map(dictionary: dict)
             return try map.pack()
         } else {
