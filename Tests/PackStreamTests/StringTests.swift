@@ -18,7 +18,6 @@ class StringTests: XCTestCase {
         let value = "Größenmaßstäbe"
         let expected: [Byte] = [0xD0, 0x12, 0x47, 0x72, 0xC3, 0xB6, 0xC3, 0x9F, 0x65, 0x6E, 0x6D, 0x61, 0xC3, 0x9F, 0x73, 0x74, 0xC3, 0xA4, 0x62, 0x65]
 
-
         let actual: [Byte] = try value.pack()
         XCTAssertEqual(expected, actual)
 
@@ -91,7 +90,7 @@ class StringTests: XCTestCase {
         XCTAssertEqual(value, unpackedValue)
     }
 
-    static var allTests : [(String, (StringTests) -> () throws -> Void)] {
+    static var allTests: [(String, (StringTests) -> () throws -> Void)] {
         return [
 
             ("testAlphabet", testAlphabet),
@@ -100,7 +99,7 @@ class StringTests: XCTestCase {
             ("testLetterA", testLetterA),
             ("testLetterEAccent", testLetterEAccent),
             ("test256As", test256As),
-            ("test65536As", test65536As),
+            ("test65536As", test65536As)
 
         ]
     }

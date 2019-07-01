@@ -1,7 +1,6 @@
 import XCTest
 @testable import PackStream
 
-
 class ListTests: XCTestCase {
 
     func testEmptyList() throws {
@@ -91,7 +90,7 @@ class ListTests: XCTestCase {
         XCTAssertNotNil(bytes)
     }
 
-    static var allTests : [(String, (ListTests) -> () throws -> Void)] {
+    static var allTests: [(String, (ListTests) -> () throws -> Void)] {
         return [
             ("testEmptyList", testEmptyList),
             ("testThreeSmallInts", testThreeSmallInts),
@@ -99,7 +98,7 @@ class ListTests: XCTestCase {
             ("testTheeHetrogenousTypes", testTheeHetrogenousTypes),
             ("testListOf256Ones", testListOf256Ones),
             ("testListOf65536Ones", testListOf65536Ones),
-            ("testWithRandomJSON", testWithRandomJSON),
+            ("testWithRandomJSON", testWithRandomJSON)
         ]
     }
 }
@@ -130,8 +129,8 @@ extension NSArray {
 }
 
 extension NSDictionary: PackProtocol {
-    func toPackProtocol() -> [String:PackProtocol] {
-        var dict = [String:PackProtocol]()
+    func toPackProtocol() -> [String: PackProtocol] {
+        var dict = [String: PackProtocol]()
 
         for (key, value) in self {
             let key = key as! String
@@ -166,7 +165,6 @@ extension NSDictionary: PackProtocol {
         return [:] // We're not using this
     }
 }
-
 
  extension NSArray: PackProtocol {
 

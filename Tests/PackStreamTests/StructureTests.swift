@@ -1,7 +1,6 @@
 import XCTest
 @testable import PackStream
 
-
 class StructureTests: XCTestCase {
 
     func testEmptyStructure() throws {
@@ -67,13 +66,13 @@ class StructureTests: XCTestCase {
         XCTAssertEqual(value, unpackedValue)
     }
 
-    static var allTests : [(String, (StructureTests) -> () throws -> Void)] {
+    static var allTests: [(String, (StructureTests) -> () throws -> Void)] {
         return [
             ("testEmptyStructure", testEmptyStructure),
             ("testThreeSmallInts", testThreeSmallInts),
             ("testFourtySmallInts", testFourtySmallInts),
             ("testTheeHetrogenousTypes", testTheeHetrogenousTypes),
-            ("testStructureOf256Ones", testStructureOf256Ones),
+            ("testStructureOf256Ones", testStructureOf256Ones)
         ]
     }
 }

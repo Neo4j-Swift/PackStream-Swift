@@ -1,7 +1,6 @@
 import XCTest
 @testable import PackStream
 
-
 class Int8Tests: XCTestCase {
 
     func testOneByteMin() throws {
@@ -54,7 +53,6 @@ class Int8Tests: XCTestCase {
         XCTAssertEqual(value, unpacked)
     }
 
-
     func testPerformance() throws {
 
         measure {
@@ -74,13 +72,13 @@ class Int8Tests: XCTestCase {
         }
     }
 
-    static var allTests : [(String, (Int8Tests) -> () throws -> Void)] {
+    static var allTests: [(String, (Int8Tests) -> () throws -> Void)] {
         #if os(Linux)
             return [
                 ("testOneByteMin", testOneByteMin),
                 ("testMin", testMin),
                 ("testMax", testMax),
-                ("test42", test42),
+                ("test42", test42)
             ]
         #else
             return [
@@ -88,7 +86,7 @@ class Int8Tests: XCTestCase {
                 ("testMin", testMin),
                 ("testMax", testMax),
                 ("test42", test42),
-                ("testPerformance", testPerformance),
+                ("testPerformance", testPerformance)
             ]
         #endif
     }
@@ -162,13 +160,13 @@ class Int16Tests: XCTestCase {
         }
     }
 
-    static var allTests : [(String, (Int16Tests) -> () throws -> Void)] {
+    static var allTests: [(String, (Int16Tests) -> () throws -> Void)] {
         #if os(Linux)
             return [
                 ("testMin", testMin),
                 ("testMax", testMax),
                 ("test42", test42),
-                ("test1234", test1234),
+                ("test1234", test1234)
             ]
         #else
             return [
@@ -176,7 +174,7 @@ class Int16Tests: XCTestCase {
                 ("testMax", testMax),
                 ("test42", test42),
                 ("test1234", test1234),
-                ("testPerformance", testPerformance),
+                ("testPerformance", testPerformance)
             ]
         #endif
     }
@@ -239,19 +237,19 @@ class Int32Tests: XCTestCase {
         }
     }
 
-    static var allTests : [(String, (Int32Tests) -> () throws -> Void)] {
+    static var allTests: [(String, (Int32Tests) -> () throws -> Void)] {
         #if os(Linux)
             return [
                 ("testMin", testMin),
                 ("testMax", testMax),
-                ("test42", test42),
+                ("test42", test42)
             ]
         #else
             return [
                 ("testMin", testMin),
                 ("testMax", testMax),
                 ("test42", test42),
-                ("testPerformance", testPerformance),
+                ("testPerformance", testPerformance)
             ]
         #endif
     }
@@ -318,19 +316,19 @@ class Int64Tests: XCTestCase {
         }
     }
 
-    static var allTests : [(String, (Int64Tests) -> () throws -> Void)] {
+    static var allTests: [(String, (Int64Tests) -> () throws -> Void)] {
         #if os(Linux)
             return [
                 ("testMin", testMin),
                 ("testMax", testMax),
-                ("test42", test42),
+                ("test42", test42)
             ]
         #else
             return [
                 ("testMin", testMin),
                 ("testMax", testMax),
                 ("test42", test42),
-                ("testPerformance", testPerformance),
+                ("testPerformance", testPerformance)
             ]
         #endif
     }

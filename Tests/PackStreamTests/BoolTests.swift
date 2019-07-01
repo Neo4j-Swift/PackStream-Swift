@@ -1,7 +1,6 @@
 import XCTest
 @testable import PackStream
 
-
 class BoolTests: XCTestCase {
 
     func testTrue() throws {
@@ -22,7 +21,7 @@ class BoolTests: XCTestCase {
 
         do {
             let bytes = [ Byte(0x00) ]
-            let _ = try Bool.unpack(bytes[0..<bytes.count])
+            _ = try Bool.unpack(bytes[0..<bytes.count])
         } catch {
             return // Test success
         }
@@ -31,11 +30,11 @@ class BoolTests: XCTestCase {
 
     }
 
-    static var allTests : [(String, (BoolTests) -> () throws -> Void)] {
+    static var allTests: [(String, (BoolTests) -> () throws -> Void)] {
         return [
             ("testTrue", testTrue),
             ("testFalse", testFalse),
-            ("testFailOnBadBytes", testFailOnBadBytes),
+            ("testFailOnBadBytes", testFailOnBadBytes)
         ]
     }
 

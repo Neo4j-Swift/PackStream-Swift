@@ -1,7 +1,6 @@
 import XCTest
 @testable import PackStream
 
-
 class NullTests: XCTestCase {
 
     func testNull() throws {
@@ -15,7 +14,7 @@ class NullTests: XCTestCase {
 
         do {
             let bytes = [ Byte(0x00) ]
-            let _ = try Null.unpack(bytes[0..<bytes.count])
+            _ = try Null.unpack(bytes[0..<bytes.count])
         } catch {
             return // Test success
         }
@@ -24,10 +23,10 @@ class NullTests: XCTestCase {
 
     }
 
-    static var allTests : [(String, (NullTests) -> () throws -> Void)] {
+    static var allTests: [(String, (NullTests) -> () throws -> Void)] {
         return [
             ("testNull", testNull),
-            ("testFailOnBadBytes", testFailOnBadBytes),
+            ("testFailOnBadBytes", testFailOnBadBytes)
         ]
     }
 

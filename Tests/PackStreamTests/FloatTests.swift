@@ -10,7 +10,6 @@ import XCTest
 
 @testable import PackStream
 
-
 class FloatTests: XCTestCase {
 
     func testMin() throws {
@@ -80,14 +79,14 @@ class FloatTests: XCTestCase {
         XCTAssertEqual(Double(-1.1), try Double.unpack(neg[0..<neg.count]))
     }
 
-    static var allTests : [(String, (FloatTests) -> () throws -> Void)] {
+    static var allTests: [(String, (FloatTests) -> () throws -> Void)] {
         return [
 
             ("testMin", testMin),
             ("testMax", testMax),
             ("test42", test42),
             ("test_6_283185307179586", test_6_283185307179586),
-            ("test_1_1", test_1_1),
+            ("test_1_1", test_1_1)
 
         ]
     }

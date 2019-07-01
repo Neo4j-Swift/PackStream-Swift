@@ -26,7 +26,6 @@ class FullTests: XCTestCase {
         let unpacked: [PackProtocol] = try Packer.unpack(data[0..<data.count])
         print(unpacked)
 
-
     }
 
     func testDeleteAllNodesStruct() throws {
@@ -43,13 +42,13 @@ class FullTests: XCTestCase {
         print(unpacked)
     }
 
-    static var allTests : [(String, (FullTests) -> () throws -> Void)] {
+    static var allTests: [(String, (FullTests) -> () throws -> Void)] {
         return [
             ("testLoginDump", testLoginDump),
             ("testSmallerDump", testSmallerDump),
             ("testLogin", testLogin),
             ("testDeleteAllNodesStruct", testDeleteAllNodesStruct),
-            ("testCreateNodeSteven", testCreateNodeSteven),
+            ("testCreateNodeSteven", testCreateNodeSteven)
         ]
     }
 

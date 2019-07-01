@@ -1,7 +1,6 @@
 import XCTest
 @testable import PackStream
 
-
 class MapTests: XCTestCase {
 
     func testEmptyMap() throws {
@@ -56,7 +55,7 @@ class MapTests: XCTestCase {
             "alpha": 42,
             "beta": 39.3,
             "gamma": "☺",
-            "delta": List(items: [1,2,3,4])
+            "delta": List(items: [1, 2, 3, 4])
             ])
         let result = try map.pack()
 
@@ -71,7 +70,7 @@ class MapTests: XCTestCase {
 
     private func performTestWith(itemCount: Int) throws {
 
-        var dict = [String:Int]()
+        var dict = [String: Int]()
         for _ in 0..<itemCount {
             let uuid = UUID()
             dict[uuid.uuidString] = uuid.hashValue % Int(Int16.max)
@@ -92,21 +91,19 @@ class MapTests: XCTestCase {
     }
     */
 
-
-    static var allTests : [(String, (MapTests) -> () throws -> Void)] {
+    static var allTests: [(String, (MapTests) -> () throws -> Void)] {
         return [
 
             ("testEmptyMap", testEmptyMap),
             ("testOnePairOfStrings", testOnePairOfStrings),
             ("testAlphabet", testAlphabet),
-            ("test256Pairs", test256Pairs),
+            ("test256Pairs", test256Pairs)
             //("test65536Pairs", test65536Pairs),
 
         ]
     }
 
 }
-
 
 // Ok, this is where the Swift type system becomes a bit too much for me...
 protocol _UInt8Type { }
