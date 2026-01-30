@@ -1,44 +1,38 @@
 import Foundation
 
-extension Double: PackProtocol {  // a.k.a Float64
+// MARK: - Double PackProtocol (IEEE 754 double-precision float)
 
-    struct Constants {
-        static let byteMarker: Byte = 0xC1
-    }
-
+extension Double: PackProtocol {
     public func pack() throws -> [Byte] {
-        let bytes = Double.toByteArray(self).reversed()
-        return [Constants.byteMarker] + bytes
+        // Get the bit pattern and write in big-endian (network) byte order
+        let bits = self.bitPattern
+        return [
+            PackStreamMarker.float64,
+            Byte((bits >> 56) & 0xFF),
+            Byte((bits >> 48) & 0xFF),
+            Byte((bits >> 40) & 0xFF),
+            Byte((bits >> 32) & 0xFF),
+            Byte((bits >> 24) & 0xFF),
+            Byte((bits >> 16) & 0xFF),
+            Byte((bits >> 8) & 0xFF),
+            Byte(bits & 0xFF)
+        ]
     }
 
     public static func unpack(_ bytes: ArraySlice<Byte>) throws -> Double {
-        guard let firstByte = bytes.first else {
-            throw UnpackError.incorrectNumberOfBytes
-        }
-
-        if firstByte != Constants.byteMarker {
+        guard bytes.count == 9, bytes.first == PackStreamMarker.float64 else {
+            if bytes.count != 9 {
+                throw UnpackError.incorrectNumberOfBytes
+            }
             throw UnpackError.unexpectedByteMarker
         }
 
-        if bytes.count != 9 {
-            throw UnpackError.incorrectNumberOfBytes
+        // Read bytes in big-endian order and reconstruct the bit pattern
+        var bits: UInt64 = 0
+        for i in 1..<9 {
+            bits = (bits << 8) | UInt64(bytes[bytes.startIndex + i])
         }
 
-        let start = bytes.startIndex + 1
-        let end = bytes.startIndex + 8
-        let array = Array(bytes[start...end].reversed())
-        let v: Double = Double.fromByteArray(array, Double.self)
-        return v
-    }
-
-    static func toByteArray<T>(_ value: T) -> [Byte] {
-        var value = value
-        return withUnsafeBytes(of: &value) { Array($0) }
-    }
-
-    static func fromByteArray<T>(_ value: [Byte], _: T.Type) -> T {
-        return value.withUnsafeBytes {
-            $0.baseAddress!.load(as: T.self)
-        }
+        return Double(bitPattern: bits)
     }
 }

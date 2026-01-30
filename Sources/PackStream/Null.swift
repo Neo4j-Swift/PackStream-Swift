@@ -1,29 +1,28 @@
 import Foundation
 
-public struct Null {
+// MARK: - Null Type
+
+/// Represents a PackStream null value
+public struct Null: Sendable, Hashable {
     public init() {}
 }
 
+// MARK: - PackProtocol Conformance
+
 extension Null: PackProtocol {
-
-    struct Constants {
-        static let byteMarker: Byte = 0xC0
-    }
-
     public func pack() throws -> [Byte] {
-        return [ Constants.byteMarker ]
+        return [PackStreamMarker.null]
     }
 
     public static func unpack(_ bytes: ArraySlice<Byte>) throws -> Null {
-        if bytes.count != 1 {
+        guard bytes.count == 1 else {
             throw UnpackError.incorrectNumberOfBytes
         }
 
-        if bytes[bytes.startIndex] != Constants.byteMarker {
+        guard bytes[bytes.startIndex] == PackStreamMarker.null else {
             throw UnpackError.unexpectedByteMarker
         }
 
         return Null()
     }
-
 }
